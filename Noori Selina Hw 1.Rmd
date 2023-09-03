@@ -1,0 +1,77 @@
+---
+title: "Noori Selina Hw 1"
+output:
+  pdf_document: default
+  html_document: default
+date: "2023-09-03"
+---
+Introduction 
+
+The generic_ballot_averages.csv dataset provides a comprehensive collection of generic ballot polling averages. This dataset offers insights into the preferences of voters in hypothetical elections, without specifying individual candidates, making it a valuable resource for analyzing and understanding voter sentiments towards different political parties in various election cycles or time periods
+
+Article information: https://projects.fivethirtyeight.com/polls/generic-ballot/
+
+```{r}
+# Loading the  necessary libraries
+library(dplyr)
+
+# Import data through URL
+data_url <- "https://projects.fivethirtyeight.com/polls/data/generic_ballot_averages.csv"
+
+# Load the dataset from the URL
+df <- read.csv(data_url)
+
+# Display the first few rows of the dataset to get an overview
+head(df)
+
+```
+
+Creating Transformations
+
+In this section, we clean and reshape the dataset. We select relevant columns, rename them for clarity, and replace non-intuitive abbreviations. Finally, we showcase the initial rows of the transformed dataset
+```{r}
+# Load necessary libraries
+library(dplyr)
+
+# Load the dataset from the provided URL
+data_url <- "https://projects.fivethirtyeight.com/polls/data/generic_ballot_averages.csv"
+df <- read.csv(data_url)
+
+# Create a subset of the columns
+df_subset <- df %>%
+  select(
+    candidate,
+    pct_estimate,
+    lo,
+    hi,
+    date,
+    election,
+    cycle
+  )
+
+# Rename columns 
+df_subset <- df_subset %>%
+  rename(
+    candidate_name = candidate,
+    percentage_estimate = pct_estimate,
+    lower_bound = lo,
+    upper_bound = hi,
+    polling_date = date,
+    election_type = election,
+    election_cycle = cycle
+  )
+
+# Replace any non-intuitive abbreviations if necessary
+# For example, if "D" represents Democrats and "R" represents Republicans:
+df_subset$candidate_name <- ifelse(df_subset$candidate_name == "D", "Democrats", 
+                                    ifelse(df_subset$candidate_name == "R", "Republicans", df_subset$candidate_name))
+
+# Display the first few rows of the transformed dataset
+head(df_subset)
+
+```
+
+Conclusion:
+
+Analyzing the dataset of generic ballot polling averages during the 2018 election cycle reveals intriguing insights into voter preferences. On average, the Democrats held a slight lead with an estimated percentage of approximately 43.9%, while the Republicans obtained around 39.5% support. To gain a deeper understanding of the dynamics at play, it is recommended to further investigate the factors influencing shifts in voter sentiment over time. 
+
