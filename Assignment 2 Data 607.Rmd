@@ -1,0 +1,31 @@
+---
+title: "HW 2 - Noori Selina"
+output: html_document
+date: "2023-09-03"
+---
+A data table has been created using SQL of popular movies, and ratings collected. The data table was saved as csv, and imported into R using the dplyr package. 
+```{r}
+install.packages("dplyr")
+library(dplyr)
+
+# Load the CSV file into an R dataframe
+data <- read.csv("/Users/selina/Downloads/movie_ratings.csv")
+
+# Check the loaded data by displaying the table
+head(data)  
+
+```
+To handle missing data which was initially written as "null" as imported from SQL, "null" has been changed to "NA" which is a better replacement when conducting analysis using R. This way, the code will be able to recognize NA as missing values, and also be able to use in built in functions in further analysis. 
+
+```{r}
+# Replace "null" with NA
+data[data == "null"] <- NA
+
+# Check the updated dataframe
+head(data)
+```
+
+
+
+
+
