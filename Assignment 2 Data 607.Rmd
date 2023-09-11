@@ -1,10 +1,19 @@
 ---
 title: "HW 2 - Noori Selina"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 date: "2023-09-03"
 ---
+
+```{r}
+options(repos = c(CRAN = "https://cran.r-project.org"))
+```
+
+
 A data table has been created using SQL of popular movies, and ratings collected. The data table was saved as csv, and imported into R using the dplyr package. 
 ```{r}
+# Install and load the "dplyr" package
 install.packages("dplyr")
 library(dplyr)
 
