@@ -1,4 +1,4 @@
--- Create the database (if it doesn't already exist)
+-- Create the database 
 CREATE DATABASE IF NOT EXISTS movie_ratings;
 
 -- Use the database
