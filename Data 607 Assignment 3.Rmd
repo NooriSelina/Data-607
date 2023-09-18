@@ -1,0 +1,73 @@
+---
+title: "Noori Selina Data 607 Assignment 3"
+output: html_document
+date: "2023-09-13"
+---
+1. Using the 173 majors listed in fivethirtyeight.com’s College Majors dataset [https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/], provide code that identifies the majors that contain either "DATA" or "STATISTICS"
+
+```{r}
+# Load the College Majors dataset from GitHub
+url <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/college-majors/majors-list.csv"
+college_majors <- read.csv(url)
+
+# Filter for majors containing "DATA" or "STATISTICS"
+data_stats_majors <- subset(college_majors, grepl("DATA|STATISTICS", Major))
+
+# Display the majors containing "DATA" or "STATISTICS"
+data_stats_majors
+```
+2. Write code that transforms the data below:
+[1] "bell pepper"  "bilberry"     "blackberry"   "blood orange"
+[5] "blueberry"    "cantaloupe"   "chili pepper" "cloudberry"  
+[9] "elderberry"   "lime"         "lychee"       "mulberry"    
+[13] "olive"        "salal berry"
+Into a format like this:
+c("bell pepper", "bilberry", "blackberry", "blood orange", "blueberry", "cantaloupe", "chili pepper", "cloudberry", "elderberry", "lime", "lychee", "mulberry", "olive", "salal berry")
+
+```{r}
+fruits <- c("bell pepper", "bilberry", "blackberry", "blood orange", "blueberry", "cantaloupe", "chili pepper", "cloudberry", "elderberry", "lime", "lychee", "mulberry", "olive", "salal berry")
+
+changed <- fruits
+
+# Print the contents of the 'changed' vector
+print(changed)
+```
+
+3. Describe, in words, what these expressions will match:
+(.)\1\1 - This expression will match a string that consists of three consecutive characters. Examples include "AAA" "BBB" 
+
+"(.)(.)\\2\\1" - This expression will match a string of four characters, where the first and the fourth characters are the same, and the second and third characters are the same. An example is "ABBA"
+
+(..)\1 - This expression matches a string with at least four characters where the first two characters repeat at the end, like "ABAB" or "1212."
+
+"(.).\\1.\\1" - This expression matches a string with at least five characters where the first character repeats at both ends, and the middle character is different, like "AXA" or "121."
+
+"(.)(.)(.).*\\3\\2\\1" - This expression matches a string that starts with three characters, followed by any characters, and then repeats the last three characters in reverse order, like "ABCABCBA" or "12344321."
+
+
+4. Construct regular expressions to match words that:
+a. Start and end with the same character.
+b. Contain a repeated pair of letters (e.g. "church" contains "ch" repeated twice.)
+c. Contain one letter repeated in at least three places (e.g. "eleven" contains three "e"s.)
+
+```{r}
+library(tidyr)
+test_words = list("refer", "pop", "noon", "church", "assessment", "occurrence") 
+
+
+#Start and end with the same character.
+Regex1 = "^(.).+\\1$"
+Filter(function(x) any(grepl(Regex1, x)), test_words)
+```
+```{r}
+
+#Contain a repeated pair of letters (e.g. "church" contains "ch" repeated twice.)
+Regex2 = '\\b\\w*(\\w{2})\\w*\\1'
+Filter(function(x) any(grepl(Regex2, x)), test_words)
+```
+```{r}
+#Contain one letter repeated in at least three places (e.g. "eleven" contains three "e"s.)
+Regex3 = "^[a-z]*([a-z])\\1[a-z]*$"
+Filter(function(x) any(grepl(Regex3, x)), test_words)
+```
+
