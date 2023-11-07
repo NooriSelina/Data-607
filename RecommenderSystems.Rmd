@@ -1,0 +1,51 @@
+---
+title: "Recommender Systems - Data 607"
+output: html_document
+date: "2023-11-07"
+---
+
+# Report: TikTok's Recommender System Analysis
+
+## Scenario Design Analysis
+
+### For the Organization (TikTok):
+
+1. Who are your target users?
+   - **Target Users:** TikTok aims to target a global audience of social media users, predominantly those interested in short-form video content.
+
+2. **What are their key goals?**
+   - **Key Goals:** TikTok's goals include increasing user engagement, enhancing user retention, and maximizing the time spent on the platform. They aim to keep users entertained and connected through personalized video recommendations.
+
+3. **How can you help them accomplish these goals?**
+   - **Helping Users Accomplish Goals:** TikTok achieves its goals by providing a personalized "For You" feed that showcases content tailored to each user's preferences. They invite users to select categories of interest, and the recommendation system learns from user interactions to refine the content selection. This personalization keeps users engaged and encourages them to spend more time on the platform.
+
+### For the Organization's Customers (TikTok Users):
+
+1. **Who are your target users?**
+   - **Target Users:** TikTok users encompass a wide range of demographics, but it primarily targets individuals who enjoy watching and creating short videos.
+
+2. **What are their key goals?**
+   - **Key Goals:** TikTok users' primary goals are to be entertained, discover new content, and connect with creators. They seek a platform that provides them with content they find interesting and engaging.
+
+3. **How can you help them accomplish these goals?**
+   - **Helping Users Accomplish Goals:** TikTok assists users in achieving their goals by presenting a personalized "For You" feed. This feed is continuously updated based on the user's interactions, such as likes, shares, and comments, as well as their initial category selections. Users can discover new content, engage with creators, and remain entertained as the system learns and adapts to their preferences.
+
+## Reverse Engineering (TikTok's Recommender System):
+
+TikTok's recommendation system operates as follows:
+- Upon sign-up, users are encouraged to select categories of interest, which provide initial information to the recommendation system.
+- If no categories are selected, the system offers a feed of recent popular videos suitable for a broad audience, considering the user's location and language.
+- User interactions, such as likes, shares, comments, and more, shape the personalized "For You" feed.
+- Various factors influence recommendations, including user interactions, video information (captions, sounds, hashtags, views), and user information (device, language, country).
+- The system dynamically weights these factors, with factors like time spent on a specific video carrying more weight.
+- User interactions similar to other users can influence recommendations, fostering a sense of community.
+
+## Recommendations for Improvement (TikTok's Recommender System):
+
+To further enhance TikTok's recommender system, the following recommendations can be considered:
+- **Transparency:** Provide more transparency on how recommendations are made to increase user trust.
+- **Granular User Control:** Offer users more granular control over the content they see, allowing them to fine-tune their recommendations.
+- **Diversity in Recommendations:** Promote content diversity to ensure users are exposed to a wide range of creators and topics.
+- **Ethical Considerations:** Ensure ethical and responsible use of user data and avoid algorithmic biases.
+
+---
